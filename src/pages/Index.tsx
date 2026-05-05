@@ -470,6 +470,39 @@ const Index = () => {
         </div>
       )}
 
+      {/* ORG */}
+      <section id="org" className="py-24 bg-charcoal">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-gold font-cormorant italic text-lg tracking-widest">детали</span>
+            <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2">
+              Оргмоменты
+            </h2>
+            <div className="w-12 h-px bg-gold mx-auto mt-4" />
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { icon: "CalendarDays", label: "Регулярность", value: "Одна встреча в неделю" },
+              { icon: "Clock", label: "Время", value: "С 18:00 до 21:00" },
+              { icon: "Hash", label: "Всего встреч", value: "8 встреч" },
+              { icon: "GraduationCap", label: "Для участников программы подготовки МГИ", value: "Часы идут в учётную книжку МГИ" },
+              { icon: "MessageCircle", label: "Запись и вопросы", value: "В личные сообщения ведущим" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-5 border border-gold/10 bg-charcoal-light/30 p-5 hover:border-gold/30 transition-colors">
+                <div className="w-10 h-10 bg-wine/30 border border-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Icon name={item.icon} size={16} className="text-gold" fallback="Info" />
+                </div>
+                <div>
+                  <p className="text-gold text-xs tracking-widest mb-1">{item.label.toUpperCase()}</p>
+                  <p className="text-cream-light text-sm leading-relaxed">{item.value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CONTACTS */}
       <section id="contacts" className="py-24 bg-charcoal-light/40">
         <div className="max-w-6xl mx-auto px-6">
