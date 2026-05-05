@@ -500,6 +500,22 @@ const Index = () => {
                 </div>
               </div>
             ))}
+            <div className="flex items-start gap-5 border border-gold/10 bg-charcoal-light/30 p-5 hover:border-gold/30 transition-colors">
+              <div className="w-10 h-10 bg-wine/30 border border-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Icon name="ExternalLink" size={16} className="text-gold" fallback="Link" />
+              </div>
+              <div>
+                <p className="text-gold text-xs tracking-widest mb-1">СТРАНИЦА НА САЙТЕ МГИ</p>
+                <a
+                  href="https://gestalt.ru/therapeutic_group/svoya-melodiya-letnyaya-ter-gruppa-dlya-terapevtov/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cream-light text-sm hover:text-gold transition-colors underline underline-offset-4 decoration-gold/40"
+                >
+                  Ссылка на сайт МГИ
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
