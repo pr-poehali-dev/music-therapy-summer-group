@@ -270,8 +270,8 @@ const Index = () => {
                 className="group relative bg-charcoal-light border border-gold/10 p-8 hover:border-gold/40 transition-all duration-500 hover:-translate-y-1"
               >
                 {host.photo ? (
-                  <div className="w-full h-64 overflow-hidden border border-gold/30 mb-6 group-hover:border-gold/60 transition-colors">
-                    <img src={host.photo} alt={host.name} className="w-full h-full object-cover" style={{ objectPosition: host.photoPosition }} />
+                  <div className="w-full border border-gold/30 mb-6 group-hover:border-gold/60 transition-colors">
+                    <img src={host.photo} alt={host.name} className="w-full h-auto block" />
                   </div>
                 ) : (
                   <div className="w-full h-64 bg-wine/40 border border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
