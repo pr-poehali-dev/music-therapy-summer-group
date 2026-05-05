@@ -23,8 +23,8 @@ const HOSTS = [
     role: "Супервизор, ассоциированный тренер МГИ",
     quote: "Я с бережностью и вниманием открою себя навстречу вам, надеясь, что вместе у нас получится новая мелодия встречи.",
     phone: "8 906 984-48-29",
-    photo: "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/afca4508-081a-4e58-aeed-622535da5abb.jpg",
-    photoPosition: "center 10%",
+    photo: "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/5b47d614-5b7b-48b9-8629-3c340e7c1458.jpg",
+    photoPosition: "center 20%",
     icon: "Brain",
   },
   {
@@ -32,8 +32,8 @@ const HOSTS = [
     role: "К.п.н., супервизор, ассоциированный тренер МГИ",
     quote: "Я буду замечать тихие ноты вашей мелодии и давать им пространство, резонируя и усиливая их звучание. Ещё я буду замечать ритмический рисунок и поддерживать ритм именно вашей мелодии.",
     phone: "8 903 944-71-16",
-    photo: "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/fa970446-fcd2-4489-8f52-a11ead270f45.jpg",
-    photoPosition: "center 5%",
+    photo: "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/ebb15f11-84d6-4932-b699-671dd22fdaad.jpg",
+    photoPosition: "center 15%",
     icon: "Users",
   },
 ];
