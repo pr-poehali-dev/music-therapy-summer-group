@@ -433,7 +433,6 @@ const Index = () => {
                   { icon: "MapPin", label: "Очный адрес", value: "г. Кемерово, ул. Шестакова, 6\nкабинет 212, 2 этаж", link: "https://go.2gis.com/7e3BN" },
                   { icon: "Phone", label: "Алина Спивак", value: HOSTS[0].phone },
                   { icon: "Phone", label: "Геннадий Авилов", value: HOSTS[1].phone },
-                  { icon: "Mail", label: "Email", value: "group@svoyamelodia.ru" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-wine/30 border border-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -460,20 +459,13 @@ const Index = () => {
                 </p>
               </div>
 
-              <div className="flex gap-4 mt-8">
-                {[
-                  { icon: "Send", label: "Telegram" },
-                  { icon: "Mail", label: "Email" },
-                ].map((s, i) => (
-                  <button
-                    key={i}
-                    className="w-10 h-10 border border-gold/30 hover:border-gold hover:bg-wine/30 flex items-center justify-center transition-all duration-300 group"
-                    title={s.label}
-                  >
-                    <Icon name={s.icon as "Send" | "Mail"} size={16} className="text-cream-dark group-hover:text-gold transition-colors" fallback="Link" />
-                  </button>
-                ))}
-              </div>
+              <a href="https://go.2gis.com/7e3BN" target="_blank" rel="noopener noreferrer" className="block mt-8 border border-gold/20 hover:border-gold/50 transition-colors overflow-hidden group">
+                <img
+                  src="https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/42b58fb8-502f-4909-94fb-7b8167f56e32.jpg"
+                  alt="Место проведения — ул. Шестакова, 6"
+                  className="w-full object-cover group-hover:opacity-90 transition-opacity"
+                />
+              </a>
           </div>
         </div>
       </section>
