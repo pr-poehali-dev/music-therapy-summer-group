@@ -297,6 +297,60 @@ const Index = () => {
         </div>
       </section>
 
+      {/* WHAT INSIDE */}
+      <section id="what-inside" className="py-24 bg-charcoal">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-gold font-cormorant italic text-lg tracking-widest">содержание</span>
+            <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2">
+              Что внутри?
+            </h2>
+            <div className="w-12 h-px bg-gold mx-auto mt-4" />
+          </div>
+
+          <div className="mb-14">
+            <p className="text-gold text-xs tracking-widest mb-6">В ГРУППЕ ЕСТЬ РЕАЛЬНАЯ ВОЗМОЖНОСТЬ ПОЛУЧИТЬ:</p>
+            <div className="space-y-4">
+              {[
+                "Поддержку переживаний, которые удержаны и спрятаны от мира. Поныть, если хочется, отпустить контроль над ситуацией.",
+                "Возможность разместить тревогу и беспокойство — найти для них безопасное место в кругу коллег.",
+                "Поддержку и выход из тупика, когда кажется, что выхода нет, и вы остаётесь с чем-то тяжёлым один на один.",
+                "Опыт разделённости своих сильных чувств — быть рядом с другими, не теряя себя, и не отгораживаясь от других.",
+              ].map((text, i) => (
+                <div key={i} className="flex items-start gap-4 border border-gold/10 bg-charcoal-light/30 p-5 hover:border-gold/30 transition-colors">
+                  <span className="text-gold mt-0.5 flex-shrink-0">◇</span>
+                  <p className="text-cream-light text-sm leading-relaxed">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="border-t border-gold/15 pt-14 mb-14">
+            <p className="font-cormorant text-2xl text-cream-light mb-2">Группа «Своя мелодия» — место для встречи «среди своих».</p>
+            <p className="text-cream-dark text-sm leading-relaxed mb-8">В любом состоянии и любом переживании здесь возможно:</p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                "по-человечески встретиться",
+                "замедлиться",
+                "быть не в ресурсе",
+                "в бессилии оставаться ценным, принимая себя таким, как есть",
+              ].map((text, i) => (
+                <div key={i} className="flex items-center gap-3 p-4 border border-gold/10 hover:border-gold/30 transition-colors">
+                  <span className="text-gold flex-shrink-0">◎</span>
+                  <p className="text-cream-light text-sm">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="border border-gold/20 bg-wine/10 p-8 text-center">
+            <p className="font-cormorant text-xl text-cream-light leading-relaxed italic">
+              «Мы будем исследовать, как звучит ваша внутренняя мелодия сейчас. Без оценки "правильно/неправильно", поддерживая её уникальность. Потому что именно её звучание и есть основа вашей профессиональной устойчивости.»
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* SCHEDULE */}
       <section id="schedule" className="py-24 bg-charcoal-light/50">
         <div className="max-w-6xl mx-auto px-6">
