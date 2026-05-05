@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { id: "home", label: "Главная" },
   { id: "about", label: "О группе" },
   { id: "hosts", label: "Ведущие" },
+  { id: "what-inside", label: "Что внутри?" },
   { id: "schedule", label: "Расписание" },
   { id: "gallery", label: "Галерея" },
   { id: "contacts", label: "Контакты" },
