@@ -430,7 +430,7 @@ const Index = () => {
               <h3 className="font-cormorant text-3xl text-cream-light mb-8">Как с нами связаться</h3>
               <div className="space-y-6">
                 {[
-                  { icon: "MapPin", label: "Очный адрес", value: "г. Кемерово\n(адрес уточняется)", link: "https://go.2gis.com/7e3BN" },
+                  { icon: "MapPin", label: "Очный адрес", value: "г. Кемерово, ул. Шестакова, 6\nкабинет 212, 2 этаж", link: "https://go.2gis.com/7e3BN" },
                   { icon: "Phone", label: "Алина Спивак", value: HOSTS[0].phone },
                   { icon: "Phone", label: "Геннадий Авилов", value: HOSTS[1].phone },
                   { icon: "Mail", label: "Email", value: "group@svoyamelodia.ru" },
