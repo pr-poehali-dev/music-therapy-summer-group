@@ -1,12 +1,507 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from "react";
+import Icon from "@/components/ui/icon";
+
+const HERO_IMG = "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/files/ed157829-6a38-40f3-86e5-d8179b882f83.jpg";
+const GALLERY_IMGS = [
+  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/files/ed157829-6a38-40f3-86e5-d8179b882f83.jpg",
+  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/files/6f8359f7-7006-4f48-8202-da87dc67b15d.jpg",
+  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/files/b5214b56-eb32-448a-a871-ac8ad91427d0.jpg",
+];
+
+const NAV_LINKS = [
+  { id: "home", label: "Главная" },
+  { id: "about", label: "О группе" },
+  { id: "hosts", label: "Ведущие" },
+  { id: "schedule", label: "Расписание" },
+  { id: "gallery", label: "Галерея" },
+  { id: "contacts", label: "Контакты" },
+];
+
+const HOSTS = [
+  {
+    name: "Анна Светлова",
+    role: "Художественный руководитель",
+    desc: "Музыкант с 15-летним опытом, душа каждого собрания группы. Создаёт атмосферу тепла и вдохновения.",
+    icon: "Music",
+  },
+  {
+    name: "Михаил Громов",
+    role: "Музыкальный ведущий",
+    desc: "Гитарист и вокалист, помогает участникам раскрыть свой голос и найти свою мелодию.",
+    icon: "Guitar",
+  },
+  {
+    name: "Елена Тихая",
+    role: "Координатор встреч",
+    desc: "Организует встречи и следит за тем, чтобы каждый участник чувствовал себя частью большой семьи.",
+    icon: "Heart",
+  },
+];
+
+const SCHEDULE = [
+  { day: "Понедельник", time: "18:00 – 20:00", type: "Открытая репетиция", note: "Для всех желающих" },
+  { day: "Среда", time: "19:00 – 21:00", type: "Творческий вечер", note: "Тема объявляется заранее" },
+  { day: "Пятница", time: "17:00 – 19:00", type: "Мастер-класс", note: "Голос и ритм" },
+  { day: "Воскресенье", time: "15:00 – 18:00", type: "Концерт-встреча", note: "2 раза в месяц" },
+];
+
+const NOTES = ["♩", "♪", "♫", "♬", "𝄞"];
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
+
+  const scrollTo = (id: string) => {
+    setMenuOpen(false);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      for (const link of [...NAV_LINKS].reverse()) {
+        const el = document.getElementById(link.id);
+        if (el && window.scrollY >= el.offsetTop - 100) {
+          setActiveSection(link.id);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
+    <div className="font-golos bg-charcoal text-cream-light min-h-screen overflow-x-hidden">
+      {/* Floating notes */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        {NOTES.map((note, i) => (
+          <span
+            key={i}
+            className="absolute font-cormorant text-gold select-none"
+            style={{
+              left: `${8 + i * 19}%`,
+              top: `${10 + i * 14}%`,
+              fontSize: `${3 + i * 0.6}rem`,
+              opacity: 0.08,
+              animation: `note-float ${5 + i}s ease-in-out infinite`,
+              animationDelay: `${i * 0.9}s`,
+            }}
+          >
+            {note}
+          </span>
+        ))}
       </div>
+
+      {/* NAVBAR */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-charcoal/90 backdrop-blur-md border-b border-gold/20">
+        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+          <button onClick={() => scrollTo("home")} className="flex items-center gap-2 group">
+            <span className="text-gold text-2xl font-cormorant italic">♪</span>
+            <span className="font-cormorant text-lg font-semibold text-cream-light tracking-wide group-hover:text-gold transition-colors">
+              Своя мелодия
+            </span>
+          </button>
+
+          <nav className="hidden md:flex items-center gap-6">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className={`text-sm tracking-wide transition-all duration-300 hover:text-gold relative after:absolute after:bottom-0 after:left-0 after:h-px after:bg-gold after:transition-all after:duration-300 ${
+                  activeSection === link.id
+                    ? "text-gold after:w-full"
+                    : "text-cream-dark after:w-0 hover:after:w-full"
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
+          </nav>
+
+          <button
+            className="md:hidden text-cream-light hover:text-gold transition-colors"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <Icon name={menuOpen ? "X" : "Menu"} size={22} />
+          </button>
+        </div>
+
+        {menuOpen && (
+          <div className="md:hidden bg-charcoal border-t border-gold/20 px-6 py-4 flex flex-col gap-3">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className={`text-left py-2 text-sm tracking-wide transition-colors ${
+                  activeSection === link.id ? "text-gold" : "text-cream-dark hover:text-gold"
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* HERO */}
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={HERO_IMG} alt="Своя мелодия" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal" />
+        </div>
+
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+          <p
+            className="font-cormorant text-gold italic text-xl mb-4 tracking-widest opacity-0"
+            style={{ animation: "fade-in 0.8s ease-out 0.3s forwards" }}
+          >
+            ♩ музыкальная группа ♩
+          </p>
+          <h1
+            className="font-cormorant text-6xl md:text-8xl font-light text-cream-light leading-tight mb-6 opacity-0"
+            style={{ animation: "fade-in 0.8s ease-out 0.5s forwards" }}
+          >
+            Своя<br />
+            <em className="text-gold font-normal">мелодия</em>
+          </h1>
+          <p
+            className="text-cream-dark text-lg font-light leading-relaxed mb-10 opacity-0"
+            style={{ animation: "fade-in 0.8s ease-out 0.8s forwards" }}
+          >
+            Место, где каждый голос важен. Живые встречи, тёплое общение<br className="hidden md:block" /> и музыка, которая объединяет.
+          </p>
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center opacity-0"
+            style={{ animation: "fade-in 0.8s ease-out 1s forwards" }}
+          >
+            <button
+              onClick={() => scrollTo("schedule")}
+              className="bg-gold text-charcoal font-semibold px-8 py-3 tracking-wide hover:bg-gold-light transition-all duration-300 hover:scale-105 text-sm"
+            >
+              РАСПИСАНИЕ ВСТРЕЧ
+            </button>
+            <button
+              onClick={() => scrollTo("about")}
+              className="border border-gold/50 text-cream-light px-8 py-3 tracking-wide hover:border-gold hover:text-gold transition-all duration-300 text-sm"
+            >
+              УЗНАТЬ БОЛЬШЕ
+            </button>
+          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+          <span className="text-cream-dark text-xs tracking-widest">ПРОКРУТИ ВНИЗ</span>
+          <Icon name="ChevronDown" size={18} className="text-gold animate-bounce" />
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="py-24 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-gold font-cormorant italic text-lg tracking-widest">♪ о нас</span>
+              <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2 mb-6 leading-tight">
+                История<br />группы
+              </h2>
+              <div className="w-12 h-px bg-gold mb-6" />
+              <p className="text-cream-dark leading-relaxed mb-5 font-light">
+                Группа «Своя мелодия» возникла из простого желания — собирать людей вокруг музыки. Не как профессионалов, а как тех, кто чувствует. Кто слышит мелодию в шуме дождя, в смехе детей, в тишине вечера.
+              </p>
+              <p className="text-cream-dark leading-relaxed mb-5 font-light">
+                С 2018 года мы проводим регулярные встречи, концерты и творческие вечера. За эти годы через нашу группу прошли сотни людей, и каждый нашёл здесь что-то своё — друга, вдохновение или просто уютный уголок.
+              </p>
+              <p className="text-cream-dark leading-relaxed font-light">
+                Нас не интересует виртуозность. Нам интересна искренность. Потому что настоящая мелодия — та, что идёт из сердца.
+              </p>
+            </div>
+
+            <div className="relative">
+              <div className="relative overflow-hidden">
+                <img
+                  src={GALLERY_IMGS[1]}
+                  alt="О группе"
+                  className="w-full h-80 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-wine p-6 border border-gold/30">
+                <span className="font-cormorant text-4xl text-gold font-light">7+</span>
+                <p className="text-cream-dark text-xs tracking-wide mt-1">лет вместе</p>
+              </div>
+              <div className="absolute -top-6 -right-6 bg-charcoal-light border border-gold/30 p-6">
+                <span className="font-cormorant text-4xl text-gold font-light">300+</span>
+                <p className="text-cream-dark text-xs tracking-wide mt-1">участников</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="flex items-center justify-center gap-4 py-4">
+        <div className="h-px bg-gold/30 flex-1 max-w-xs" />
+        <span className="text-gold text-2xl font-cormorant">♫</span>
+        <div className="h-px bg-gold/30 flex-1 max-w-xs" />
+      </div>
+
+      {/* HOSTS */}
+      <section id="hosts" className="py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-gold font-cormorant italic text-lg tracking-widest">♪ команда</span>
+            <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2">
+              Наши ведущие
+            </h2>
+            <div className="w-12 h-px bg-gold mx-auto mt-4" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {HOSTS.map((host, i) => (
+              <div
+                key={i}
+                className="group relative bg-charcoal-light border border-gold/10 p-8 hover:border-gold/40 transition-all duration-500 hover:-translate-y-1"
+              >
+                <div className="w-16 h-16 rounded-full bg-wine/40 border border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
+                  <Icon name={host.icon as "Music" | "Guitar" | "Heart"} size={24} className="text-gold" fallback="Music" />
+                </div>
+                <h3 className="font-cormorant text-2xl text-cream-light mb-1">{host.name}</h3>
+                <p className="text-gold text-xs tracking-widest mb-4">{host.role.toUpperCase()}</p>
+                <p className="text-cream-dark font-light text-sm leading-relaxed">{host.desc}</p>
+                <span className="absolute top-4 right-6 text-gold/20 text-4xl font-cormorant group-hover:text-gold/40 transition-colors">♪</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SCHEDULE */}
+      <section id="schedule" className="py-24 bg-charcoal-light/50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-gold font-cormorant italic text-lg tracking-widest">♪ когда</span>
+            <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2">
+              Расписание встреч
+            </h2>
+            <div className="w-12 h-px bg-gold mx-auto mt-4" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {SCHEDULE.map((item, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-4 bg-charcoal border border-gold/10 p-6 hover:border-gold/30 transition-all duration-300 group"
+              >
+                <div className="flex-shrink-0 w-10 h-10 bg-wine/30 border border-gold/20 flex items-center justify-center group-hover:bg-wine/50 transition-colors">
+                  <span className="text-gold text-lg">♩</span>
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="font-cormorant text-xl text-cream-light">{item.day}</span>
+                    <span className="text-gold/60 text-xs">•</span>
+                    <span className="text-gold text-sm font-medium">{item.time}</span>
+                  </div>
+                  <p className="text-cream-light text-sm font-medium mb-1">{item.type}</p>
+                  <p className="text-cream-dark text-xs">{item.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <p className="text-cream-dark text-sm mb-6">
+              Все встречи проходят по адресу: <span className="text-gold">ул. Музыкальная, 7, Зал камерной музыки</span>
+            </p>
+            <button
+              onClick={() => scrollTo("contacts")}
+              className="bg-gold text-charcoal font-semibold px-8 py-3 tracking-wide hover:bg-gold-light transition-all duration-300 hover:scale-105 text-sm"
+            >
+              ЗАПИСАТЬСЯ НА ВСТРЕЧУ
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* GALLERY */}
+      <section id="gallery" className="py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-gold font-cormorant italic text-lg tracking-widest">♪ воспоминания</span>
+            <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2">
+              Фотогалерея
+            </h2>
+            <div className="w-12 h-px bg-gold mx-auto mt-4" />
+            <p className="text-cream-dark mt-4 font-light">Моменты, которые остаются в сердце</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {GALLERY_IMGS.map((img, i) => (
+              <div
+                key={i}
+                className={`relative overflow-hidden group cursor-pointer ${i === 0 ? "md:col-span-2" : ""}`}
+                onClick={() => setLightboxImg(img)}
+              >
+                <img
+                  src={img}
+                  alt={`Галерея ${i + 1}`}
+                  className="w-full h-64 md:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-90 group-hover:scale-100">
+                    <div className="w-12 h-12 border border-cream-light rounded-full flex items-center justify-center">
+                      <Icon name="ZoomIn" size={18} className="text-cream-light" />
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-charcoal/60 to-transparent" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      {lightboxImg && (
+        <div
+          className="fixed inset-0 z-50 bg-charcoal/95 flex items-center justify-center p-4"
+          onClick={() => setLightboxImg(null)}
+        >
+          <button
+            className="absolute top-6 right-6 text-cream-dark hover:text-cream-light transition-colors"
+            onClick={() => setLightboxImg(null)}
+          >
+            <Icon name="X" size={28} />
+          </button>
+          <img
+            src={lightboxImg}
+            alt="Фото"
+            className="max-w-full max-h-[85vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
+      {/* CONTACTS */}
+      <section id="contacts" className="py-24 bg-charcoal-light/40">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="text-gold font-cormorant italic text-lg tracking-widest">♪ связь</span>
+            <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2">
+              Контакты
+            </h2>
+            <div className="w-12 h-px bg-gold mx-auto mt-4" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16">
+            <div>
+              <h3 className="font-cormorant text-3xl text-cream-light mb-8">Найдите нас</h3>
+              <div className="space-y-6">
+                {[
+                  { icon: "MapPin", label: "Адрес", value: "ул. Музыкальная, 7\nЗал камерной музыки" },
+                  { icon: "Phone", label: "Телефон", value: "+7 (999) 123-45-67" },
+                  { icon: "Mail", label: "Email", value: "hello@svoyamelodia.ru" },
+                  { icon: "Clock", label: "Время работы", value: "Пн–Пт: 10:00–20:00\nСб–Вс: 12:00–18:00" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-wine/30 border border-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Icon name={item.icon as "MapPin" | "Phone" | "Mail" | "Clock"} size={16} className="text-gold" fallback="Info" />
+                    </div>
+                    <div>
+                      <p className="text-gold text-xs tracking-widest mb-1">{item.label.toUpperCase()}</p>
+                      <p className="text-cream-light text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex gap-4 mt-10">
+                {[
+                  { icon: "Instagram", label: "Instagram" },
+                  { icon: "Youtube", label: "YouTube" },
+                  { icon: "Send", label: "Telegram" },
+                ].map((s, i) => (
+                  <button
+                    key={i}
+                    className="w-10 h-10 border border-gold/30 hover:border-gold hover:bg-wine/30 flex items-center justify-center transition-all duration-300 group"
+                    title={s.label}
+                  >
+                    <Icon name={s.icon as "Instagram" | "Youtube" | "Send"} size={16} className="text-cream-dark group-hover:text-gold transition-colors" fallback="Link" />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-cormorant text-3xl text-cream-light mb-8">Напишите нам</h3>
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <div>
+                  <label className="text-gold text-xs tracking-widest block mb-2">ИМЯ</label>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="Ваше имя"
+                    className="w-full bg-charcoal border border-gold/20 focus:border-gold/60 outline-none text-cream-light placeholder:text-cream-dark/40 px-4 py-3 text-sm transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="text-gold text-xs tracking-widest block mb-2">ТЕЛЕФОН</label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="+7 (___) ___-__-__"
+                    className="w-full bg-charcoal border border-gold/20 focus:border-gold/60 outline-none text-cream-light placeholder:text-cream-dark/40 px-4 py-3 text-sm transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="text-gold text-xs tracking-widest block mb-2">СООБЩЕНИЕ</label>
+                  <textarea
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Ваш вопрос или пожелание..."
+                    rows={4}
+                    className="w-full bg-charcoal border border-gold/20 focus:border-gold/60 outline-none text-cream-light placeholder:text-cream-dark/40 px-4 py-3 text-sm transition-colors resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-gold text-charcoal font-semibold py-3 tracking-wide hover:bg-gold-light transition-all duration-300 hover:scale-[1.01] text-sm"
+                >
+                  ОТПРАВИТЬ СООБЩЕНИЕ
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-gold/20 py-8">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-gold text-xl font-cormorant">♪</span>
+            <span className="font-cormorant text-cream-dark italic">Своя мелодия</span>
+          </div>
+          <p className="text-cream-dark/50 text-xs text-center">
+            © 2024 Музыкальная группа «Своя мелодия». Все права защищены.
+          </p>
+          <div className="flex gap-6">
+            {NAV_LINKS.slice(1).map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className="text-cream-dark/60 text-xs hover:text-gold transition-colors tracking-wide"
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
