@@ -23,6 +23,7 @@ const HOSTS = [
     role: "Супервизор, ассоциированный тренер МГИ",
     quote: "Я с бережностью и вниманием открою себя навстречу вам, надеясь, что вместе у нас получится новая мелодия встречи.",
     phone: "8 906 984-48-29",
+    photo: "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/afca4508-081a-4e58-aeed-622535da5abb.jpg",
     icon: "Brain",
   },
   {
@@ -30,6 +31,7 @@ const HOSTS = [
     role: "К.п.н., супервизор, ассоциированный тренер МГИ",
     quote: "Я буду замечать тихие ноты вашей мелодии и давать им пространство, резонируя и усиливая их звучание. Ещё я буду замечать ритмический рисунок и поддерживать ритм именно вашей мелодии.",
     phone: "8 903 944-71-16",
+    photo: null,
     icon: "Users",
   },
 ];
@@ -261,9 +263,15 @@ const Index = () => {
                 key={i}
                 className="group relative bg-charcoal-light border border-gold/10 p-8 hover:border-gold/40 transition-all duration-500 hover:-translate-y-1"
               >
-                <div className="w-16 h-16 rounded-full bg-wine/40 border border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
-                  <Icon name={host.icon as "Brain" | "Users"} size={24} className="text-gold" fallback="User" />
-                </div>
+                {host.photo ? (
+                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gold/40 mb-6 group-hover:border-gold/70 transition-colors">
+                    <img src={host.photo} alt={host.name} className="w-full h-full object-cover object-top" />
+                  </div>
+                ) : (
+                  <div className="w-20 h-20 rounded-full bg-wine/40 border-2 border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
+                    <Icon name={host.icon as "Brain" | "Users"} size={28} className="text-gold" fallback="User" />
+                  </div>
+                )}
                 <h3 className="font-cormorant text-2xl text-cream-light mb-1">{host.name}</h3>
                 <p className="text-gold text-xs tracking-widest mb-5">{host.role.toUpperCase()}</p>
                 <blockquote className="text-cream-dark font-light text-sm leading-relaxed italic border-l-2 border-gold/30 pl-4 mb-5">
