@@ -265,7 +265,7 @@ const Index = () => {
               >
                 {host.photo ? (
                   <div className="w-full h-64 overflow-hidden border border-gold/30 mb-6 group-hover:border-gold/60 transition-colors">
-                    <img src={host.photo} alt={host.name} className="w-full h-full object-cover" style={{ objectPosition: "center 15%" }} />
+                    <img src={host.photo} alt={host.name} className="w-full h-full object-cover" style={{ objectPosition: "center top" }} />
                   </div>
                 ) : (
                   <div className="w-full h-64 bg-wine/40 border border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
