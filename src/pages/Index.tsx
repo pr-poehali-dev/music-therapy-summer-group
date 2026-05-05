@@ -342,11 +342,9 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-10">
-            <p className="text-cream-dark text-sm mb-2">
-              Встречи проходят очно и онлайн.
-            </p>
+            <p className="text-cream-dark text-sm mb-2">Встречи проходят очно.</p>
             <p className="text-cream-dark text-sm mb-6">
-              Очный адрес: <span className="text-gold">ул. Пушкина, 14, каб. 3 (г. Москва)</span>
+              Очный адрес: <span className="text-gold">ул. Шестакова, 6. кабинет 212, 2 этаж (г. Кемерово)</span>
             </p>
             <button
               onClick={() => scrollTo("contacts")}
