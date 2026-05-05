@@ -230,12 +230,8 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-wine p-6 border border-gold/30">
-                <span className="font-cormorant text-4xl text-gold font-light">6+</span>
-                <p className="text-cream-dark text-xs tracking-wide mt-1">лет работы</p>
-              </div>
-              <div className="absolute -top-6 -right-6 bg-charcoal-light border border-gold/30 p-6">
-                <span className="font-cormorant text-4xl text-gold font-light">120+</span>
-                <p className="text-cream-dark text-xs tracking-wide mt-1">участников</p>
+                <span className="font-cormorant text-4xl text-gold font-light">20+</span>
+                <p className="text-cream-dark text-xs tracking-wide mt-1">лет опыта</p>
               </div>
             </div>
           </div>
