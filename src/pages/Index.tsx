@@ -19,22 +19,18 @@ const NAV_LINKS = [
 
 const HOSTS = [
   {
-    name: "Анна Светлова",
-    role: "Супервизор, ведущая группы",
-    desc: "Психотерапевт с 18-летним опытом клинической практики. Специализируется на групповой терапии и профессиональном выгорании. Кандидат психологических наук.",
+    name: "Алина Спивак",
+    role: "Супервизор, ассоциированный тренер МГИ",
+    quote: "Я с бережностью и вниманием открою себя навстречу вам, надеясь, что вместе у нас получится новая мелодия встречи.",
+    phone: "8 906 984-48-29",
     icon: "Brain",
   },
   {
-    name: "Михаил Громов",
-    role: "Психотерапевт, со-ведущий",
-    desc: "Работает в психоаналитическом и экзистенциальном подходах. Проводит индивидуальную и групповую терапию более 12 лет.",
+    name: "Геннадий Авилов",
+    role: "К.п.н., супервизор, ассоциированный тренер МГИ",
+    quote: "Я буду замечать тихие ноты вашей мелодии и давать им пространство, резонируя и усиливая их звучание. Ещё я буду замечать ритмический рисунок и поддерживать ритм именно вашей мелодии.",
+    phone: "8 903 944-71-16",
     icon: "Users",
-  },
-  {
-    name: "Елена Тихая",
-    role: "Координатор программы",
-    desc: "Организует встречи группы, ведёт программу мастер-классов и следит за соблюдением профессиональных стандартов и конфиденциальности.",
-    icon: "Shield",
   },
 ];
 
@@ -259,18 +255,27 @@ const Index = () => {
             <div className="w-12 h-px bg-gold mx-auto mt-4" />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {HOSTS.map((host, i) => (
               <div
                 key={i}
                 className="group relative bg-charcoal-light border border-gold/10 p-8 hover:border-gold/40 transition-all duration-500 hover:-translate-y-1"
               >
                 <div className="w-16 h-16 rounded-full bg-wine/40 border border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
-                  <Icon name={host.icon as "Brain" | "Users" | "Shield"} size={24} className="text-gold" fallback="User" />
+                  <Icon name={host.icon as "Brain" | "Users"} size={24} className="text-gold" fallback="User" />
                 </div>
                 <h3 className="font-cormorant text-2xl text-cream-light mb-1">{host.name}</h3>
-                <p className="text-gold text-xs tracking-widest mb-4">{host.role.toUpperCase()}</p>
-                <p className="text-cream-dark font-light text-sm leading-relaxed">{host.desc}</p>
+                <p className="text-gold text-xs tracking-widest mb-5">{host.role.toUpperCase()}</p>
+                <blockquote className="text-cream-dark font-light text-sm leading-relaxed italic border-l-2 border-gold/30 pl-4 mb-5">
+                  «{host.quote}»
+                </blockquote>
+                <a
+                  href={`tel:+7${host.phone.replace(/\D/g, "").slice(1)}`}
+                  className="flex items-center gap-2 text-gold/70 hover:text-gold transition-colors text-sm"
+                >
+                  <Icon name="Phone" size={13} className="text-gold/70" fallback="Phone" />
+                  {host.phone}
+                </a>
                 <span className="absolute top-4 right-6 text-gold/20 text-3xl font-cormorant group-hover:text-gold/40 transition-colors">◎</span>
               </div>
             ))}
