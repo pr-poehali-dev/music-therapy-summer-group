@@ -426,23 +426,28 @@ const Index = () => {
             <div className="w-12 h-px bg-gold mx-auto mt-4" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
+          <div className="max-w-2xl mx-auto">
               <h3 className="font-cormorant text-3xl text-cream-light mb-8">Как с нами связаться</h3>
               <div className="space-y-6">
                 {[
-                  { icon: "MapPin", label: "Очный адрес", value: "г. Москва, ул. Пушкина, 14\nкабинет 3" },
-                  { icon: "Video", label: "Онлайн", value: "Zoom (ссылка после записи)" },
-                  { icon: "Phone", label: "Телефон", value: "+7 (999) 123-45-67" },
+                  { icon: "MapPin", label: "Очный адрес", value: "г. Кемерово\n(адрес уточняется)", link: "https://go.2gis.com/7e3BN" },
+                  { icon: "Phone", label: "Алина Спивак", value: HOSTS[0].phone },
+                  { icon: "Phone", label: "Геннадий Авилов", value: HOSTS[1].phone },
                   { icon: "Mail", label: "Email", value: "group@svoyamelodia.ru" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-wine/30 border border-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Icon name={item.icon as "MapPin" | "Video" | "Phone" | "Mail"} size={16} className="text-gold" fallback="Info" />
+                      <Icon name={item.icon as "MapPin" | "Phone" | "Mail"} size={16} className="text-gold" fallback="Info" />
                     </div>
                     <div>
                       <p className="text-gold text-xs tracking-widest mb-1">{item.label.toUpperCase()}</p>
-                      <p className="text-cream-light text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
+                      {item.link ? (
+                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-cream-light text-sm whitespace-pre-line leading-relaxed hover:text-gold transition-colors">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-cream-light text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -469,49 +474,6 @@ const Index = () => {
                   </button>
                 ))}
               </div>
-            </div>
-
-            <div>
-              <h3 className="font-cormorant text-3xl text-cream-light mb-8">Подать заявку</h3>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <label className="text-gold text-xs tracking-widest block mb-2">ИМЯ И ФАМИЛИЯ</label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Ваше имя"
-                    className="w-full bg-charcoal border border-gold/20 focus:border-gold/60 outline-none text-cream-light placeholder:text-cream-dark/40 px-4 py-3 text-sm transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="text-gold text-xs tracking-widest block mb-2">ТЕЛЕФОН ИЛИ TELEGRAM</label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+7 (___) ___-__-__"
-                    className="w-full bg-charcoal border border-gold/20 focus:border-gold/60 outline-none text-cream-light placeholder:text-cream-dark/40 px-4 py-3 text-sm transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="text-gold text-xs tracking-widest block mb-2">О СЕБЕ И ЗАПРОСЕ</label>
-                  <textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Расскажите немного о своей практике и о том, что привело вас в группу..."
-                    rows={4}
-                    className="w-full bg-charcoal border border-gold/20 focus:border-gold/60 outline-none text-cream-light placeholder:text-cream-dark/40 px-4 py-3 text-sm transition-colors resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-gold text-charcoal font-semibold py-3 tracking-wide hover:bg-gold-light transition-all duration-300 hover:scale-[1.01] text-sm"
-                >
-                  ОТПРАВИТЬ ЗАЯВКУ
-                </button>
-              </form>
-            </div>
           </div>
         </div>
       </section>
