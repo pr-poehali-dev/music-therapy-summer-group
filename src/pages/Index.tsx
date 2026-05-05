@@ -39,10 +39,14 @@ const HOSTS = [
 ];
 
 const SCHEDULE = [
-  { day: "Понедельник", time: "18:00 – 20:00", type: "Групповая супервизия", note: "Разбор клинических случаев" },
-  { day: "Среда", time: "19:00 – 21:00", type: "Балинтовская группа", note: "Тема объявляется заранее" },
-  { day: "Пятница", time: "17:00 – 19:00", type: "Мастер-класс", note: "Методы и техники работы" },
-  { day: "Воскресенье", time: "11:00 – 14:00", type: "Интенсив для практиков", note: "2 раза в месяц" },
+  { date: "03.06.2026", weekday: "Среда" },
+  { date: "10.06.2026", weekday: "Среда" },
+  { date: "17.06.2026", weekday: "Среда" },
+  { date: "24.06.2026", weekday: "Среда" },
+  { date: "01.07.2026", weekday: "Среда" },
+  { date: "08.07.2026", weekday: "Среда" },
+  { date: "15.07.2026", weekday: "Среда" },
+  { date: "22.07.2026", weekday: "Среда" },
 ];
 
 const SYMBOLS = ["◯", "◎", "∿", "⌒", "◇"];
@@ -304,26 +308,37 @@ const Index = () => {
             <div className="w-12 h-px bg-gold mx-auto mt-4" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            {SCHEDULE.map((item, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 bg-charcoal border border-gold/10 p-6 hover:border-gold/30 transition-all duration-300 group"
-              >
-                <div className="flex-shrink-0 w-10 h-10 bg-wine/30 border border-gold/20 flex items-center justify-center group-hover:bg-wine/50 transition-colors">
-                  <span className="text-gold text-base">◇</span>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-charcoal border border-gold/20 p-8 mb-6">
+              <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gold/15">
+                <div className="w-12 h-12 bg-wine/40 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                  <Icon name="CalendarDays" size={20} className="text-gold" fallback="Calendar" />
                 </div>
                 <div>
-                  <div className="flex items-center gap-3 mb-1 flex-wrap">
-                    <span className="font-cormorant text-xl text-cream-light">{item.day}</span>
-                    <span className="text-gold/60 text-xs">•</span>
-                    <span className="text-gold text-sm font-medium">{item.time}</span>
-                  </div>
-                  <p className="text-cream-light text-sm font-medium mb-1">{item.type}</p>
-                  <p className="text-cream-dark text-xs">{item.note}</p>
+                  <p className="text-gold text-xs tracking-widest mb-1">СТАРТ ПРОГРАММЫ</p>
+                  <p className="font-cormorant text-2xl text-cream-light">3 июня 2026 года</p>
+                </div>
+                <div className="ml-auto text-right">
+                  <p className="text-gold text-xs tracking-widest mb-1">ВРЕМЯ</p>
+                  <p className="font-cormorant text-2xl text-cream-light">18:00 – 21:00</p>
                 </div>
               </div>
-            ))}
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {SCHEDULE.map((item, i) => (
+                  <div
+                    key={i}
+                    className={`border p-3 text-center transition-all duration-300 ${i === 0 ? "border-gold/60 bg-wine/20" : "border-gold/15 hover:border-gold/40"}`}
+                  >
+                    {i === 0 && (
+                      <span className="text-gold text-xs tracking-widest block mb-1">СТАРТ</span>
+                    )}
+                    <p className="font-cormorant text-xl text-cream-light">{item.date.slice(0, 5)}</p>
+                    <p className="text-cream-dark text-xs mt-1">{item.date.slice(6)}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="text-center mt-10">
