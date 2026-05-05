@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { id: "what-inside", label: "Что внутри?" },
   { id: "schedule", label: "Расписание" },
   { id: "gallery", label: "Галерея" },
+  { id: "org", label: "Оргмоменты" },
   { id: "contacts", label: "Контакты" },
 ];
 
