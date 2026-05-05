@@ -176,7 +176,7 @@ const Index = () => {
             style={{ animation: "fade-in 0.8s ease-out 0.8s forwards" }}
           >
             Профессиональное пространство для психотерапевтов.<br className="hidden md:block" />
-            Супервизия, обмен опытом и поддержка коллег.
+            Приходите настраиваться — в кругу тех, кто понимает музыку этой профессии.
           </p>
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center opacity-0"
