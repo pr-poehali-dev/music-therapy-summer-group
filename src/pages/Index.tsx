@@ -24,6 +24,7 @@ const HOSTS = [
     quote: "Я с бережностью и вниманием открою себя навстречу вам, надеясь, что вместе у нас получится новая мелодия встречи.",
     phone: "8 906 984-48-29",
     photo: "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/afca4508-081a-4e58-aeed-622535da5abb.jpg",
+    photoPosition: "center 10%",
     icon: "Brain",
   },
   {
@@ -32,6 +33,7 @@ const HOSTS = [
     quote: "Я буду замечать тихие ноты вашей мелодии и давать им пространство, резонируя и усиливая их звучание. Ещё я буду замечать ритмический рисунок и поддерживать ритм именно вашей мелодии.",
     phone: "8 903 944-71-16",
     photo: "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/fa970446-fcd2-4489-8f52-a11ead270f45.jpg",
+    photoPosition: "center 5%",
     icon: "Users",
   },
 ];
@@ -265,7 +267,7 @@ const Index = () => {
               >
                 {host.photo ? (
                   <div className="w-full h-64 overflow-hidden border border-gold/30 mb-6 group-hover:border-gold/60 transition-colors">
-                    <img src={host.photo} alt={host.name} className="w-full h-full object-cover" style={{ objectPosition: "center top" }} />
+                    <img src={host.photo} alt={host.name} className="w-full h-full object-cover" style={{ objectPosition: host.photoPosition }} />
                   </div>
                 ) : (
                   <div className="w-full h-64 bg-wine/40 border border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
