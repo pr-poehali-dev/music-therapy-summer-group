@@ -3,9 +3,9 @@ import Icon from "@/components/ui/icon";
 
 const HERO_IMG = "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/files/e00a0bad-c494-4995-93b8-7f63b4108496.jpg";
 const GALLERY_IMGS = [
-  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/files/e00a0bad-c494-4995-93b8-7f63b4108496.jpg",
-  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/files/8d76eccb-66b2-4f30-afdf-f6ff79988855.jpg",
-  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/files/e3e5c9e0-67cb-40f2-b690-3c74a54a3009.jpg",
+  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/9e0da373-ae4a-49bc-b49b-7950b5632267.jpg",
+  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/d406fbf4-835c-47b5-bbb5-8878d695bc2a.jpg",
+  "https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/b31dc539-6fc5-4087-9f8f-978f6783ed1c.jpg",
 ];
 
 const NAV_LINKS = [
