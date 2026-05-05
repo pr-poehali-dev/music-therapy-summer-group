@@ -10,9 +10,9 @@ const GALLERY_IMGS = [
 
 const NAV_LINKS = [
   { id: "home", label: "Главная" },
-  { id: "about", label: "О группе" },
   { id: "hosts", label: "Ведущие" },
   { id: "what-inside", label: "Что внутри?" },
+  { id: "about", label: "О группе" },
   { id: "schedule", label: "Расписание" },
   { id: "gallery", label: "Галерея" },
   { id: "org", label: "Оргмоменты" },
@@ -205,47 +205,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section id="about" className="py-24 relative">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-gold font-cormorant italic text-lg tracking-widest">о группе</span>
-              <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2 mb-6 leading-tight">
-                Пространство<br />для практиков
-              </h2>
-              <div className="w-12 h-px bg-gold mb-6" />
-              <p className="leading-relaxed mb-5 font-light text-[#e6cea6]">Терапевтическая группа «Своя мелодия» — это закрытая профессиональная группа для практикующих психотерапевтов. Это пространство, где у вас есть возможность услышать голос своей собственной мелодии, звучащей в жизни и профессии.</p>
-              <p className="text-cream-dark leading-relaxed mb-5 font-light">Коллеги! Мы с вами выбрали профессию, где главный инструмент — мы сами. Наш внутренний психический мир настроен как музыкальный инструмент: он резонирует, отзывается на чужую боль, звучит в унисон с клиентом. Именно им мы и работаем. Заботиться о нём — не просто важно, это жизненно необходимо. 
 
-Какая ваша мелодия?
-· Звучит ли она сейчас гармонично?
-· Или в ней появились искажения, фальшивые ноты, глухие паузы?
-· А может, вы заметили, что ваша мелодия стала тише или вовсе замолкает в присутствии клиента?
-
-В кабинете рядом с другим мы можем замечать усталость, апатию, отсутствие любопытства к себе и другому, чувство опустошения. Это не поломка, а сигнал о том, что пора позаботиться о себе.</p>
-              <p className="text-cream-dark leading-relaxed font-light">Количество мест ограничено — до 8–10 человек.
-
-Группа открыта для специалистов любых терапевтических направлений — психоанализ, гештальт, КПТ, экзистенциальная терапия. Важна не школа, а готовность к диалогу.</p>
-            </div>
-
-            <div className="relative">
-              <div className="relative overflow-hidden">
-                <img
-                  src={GALLERY_IMGS[1]}
-                  alt="О группе"
-                  className="w-full h-80 object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-wine p-6 border border-gold/30">
-                <span className="font-cormorant text-4xl text-gold font-light">20+</span>
-                <p className="text-cream-dark text-xs tracking-wide mt-1">лет опыта</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Divider */}
       <div className="flex items-center justify-center gap-4 py-4">
@@ -349,6 +309,48 @@ const Index = () => {
             <p className="font-cormorant text-xl text-cream-light leading-relaxed italic">
               «Мы будем исследовать, как звучит ваша внутренняя мелодия сейчас. Без оценки "правильно/неправильно", поддерживая её уникальность. Потому что именно её звучание и есть основа вашей профессиональной устойчивости.»
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="py-24 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-gold font-cormorant italic text-lg tracking-widest">о группе</span>
+              <h2 className="font-cormorant text-5xl md:text-6xl font-light text-cream-light mt-2 mb-6 leading-tight">
+                Пространство<br />для практиков
+              </h2>
+              <div className="w-12 h-px bg-gold mb-6" />
+              <p className="leading-relaxed mb-5 font-light text-[#e6cea6]">Терапевтическая группа «Своя мелодия» — это закрытая профессиональная группа для практикующих психотерапевтов. Это пространство, где у вас есть возможность услышать голос своей собственной мелодии, звучащей в жизни и профессии.</p>
+              <p className="text-cream-dark leading-relaxed mb-5 font-light">Коллеги! Мы с вами выбрали профессию, где главный инструмент — мы сами. Наш внутренний психический мир настроен как музыкальный инструмент: он резонирует, отзывается на чужую боль, звучит в унисон с клиентом. Именно им мы и работаем. Заботиться о нём — не просто важно, это жизненно необходимо. 
+
+Какая ваша мелодия?
+· Звучит ли она сейчас гармонично?
+· Или в ней появились искажения, фальшивые ноты, глухие паузы?
+· А может, вы заметили, что ваша мелодия стала тише или вовсе замолкает в присутствии клиента?
+
+В кабинете рядом с другим мы можем замечать усталость, апатию, отсутствие любопытства к себе и другому, чувство опустошения. Это не поломка, а сигнал о том, что пора позаботиться о себе.</p>
+              <p className="text-cream-dark leading-relaxed font-light">Количество мест ограничено — до 8–10 человек.
+
+Группа открыта для специалистов любых терапевтических направлений — психоанализ, гештальт, КПТ, экзистенциальная терапия. Важна не школа, а готовность к диалогу.</p>
+            </div>
+
+            <div className="relative">
+              <div className="relative overflow-hidden">
+                <img
+                  src={GALLERY_IMGS[1]}
+                  alt="О группе"
+                  className="w-full h-80 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-wine p-6 border border-gold/30">
+                <span className="font-cormorant text-4xl text-gold font-light">20+</span>
+                <p className="text-cream-dark text-xs tracking-wide mt-1">лет опыта</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
