@@ -452,13 +452,6 @@ const Index = () => {
                 ))}
               </div>
 
-              <div className="mt-8 p-5 border border-gold/20 bg-wine/10">
-                <p className="text-cream-dark text-sm leading-relaxed font-light">
-                  <span className="text-gold text-xs tracking-widest block mb-2">ВАЖНО</span>
-                  Участие в группе требует подписания соглашения о конфиденциальности. Вся информация, обсуждаемая на встречах, остаётся внутри группы.
-                </p>
-              </div>
-
               <a href="https://go.2gis.com/7e3BN" target="_blank" rel="noopener noreferrer" className="block mt-8 border border-gold/20 hover:border-gold/50 transition-colors overflow-hidden group">
                 <img
                   src="https://cdn.poehali.dev/projects/7d023e65-a7ae-46f3-915e-aeca9af26149/bucket/42b58fb8-502f-4909-94fb-7b8167f56e32.jpg"
