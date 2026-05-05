@@ -264,12 +264,12 @@ const Index = () => {
                 className="group relative bg-charcoal-light border border-gold/10 p-8 hover:border-gold/40 transition-all duration-500 hover:-translate-y-1"
               >
                 {host.photo ? (
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gold/40 mb-6 group-hover:border-gold/70 transition-colors">
+                  <div className="w-full h-64 overflow-hidden border border-gold/30 mb-6 group-hover:border-gold/60 transition-colors">
                     <img src={host.photo} alt={host.name} className="w-full h-full object-cover object-top" />
                   </div>
                 ) : (
-                  <div className="w-20 h-20 rounded-full bg-wine/40 border-2 border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
-                    <Icon name={host.icon as "Brain" | "Users"} size={28} className="text-gold" fallback="User" />
+                  <div className="w-full h-64 bg-wine/40 border border-gold/30 flex items-center justify-center mb-6 group-hover:bg-wine/60 transition-colors">
+                    <Icon name={host.icon as "Brain" | "Users"} size={48} className="text-gold/40" fallback="User" />
                   </div>
                 )}
                 <h3 className="font-cormorant text-2xl text-cream-light mb-1">{host.name}</h3>
