@@ -306,9 +306,8 @@ const Index = () => {
           </div>
 
           <div className="border border-gold/20 bg-wine/10 p-8 text-center">
-            <p className="font-cormorant text-xl text-cream-light leading-relaxed italic">
-              «Мы будем исследовать, как звучит ваша внутренняя мелодия сейчас. Без оценки "правильно/неправильно", поддерживая её уникальность. Потому что именно её звучание и есть основа вашей профессиональной устойчивости.»
-            </p>
+            <p className="font-cormorant text-xl text-cream-light leading-relaxed italic">«Мы будем исследовать, как звучит ваша внутренняя мелодия сейчас. 
+Без оценки "правильно/неправильно", поддерживая её уникальность. Потому что именно её звучание и есть основа вашей профессиональной устойчивости.»</p>
           </div>
         </div>
       </section>
